@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="col-md-6" style="margin:3rem">
+  <form id="loginform" name="loginform" class="container-fluid" (submit)="verifyLoginAttempt()"  novalidate>
+      <div class="form-group">
+        <label for="username">User Name</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter user name" >
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" >
+      </div>
+      <div class="form-group">
+          <button type="text"  name="submitbutton" id="submitbutton"  class="btn btn-primary" >Submit</button>
+        </div>
+        <div class="form-group" *ngIf="showError">
+            <p name="form-notice" id="form-notice">login failed</p>
+        </div>
+    </form>
+  </div>

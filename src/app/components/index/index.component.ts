@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -7,16 +8,17 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  dbService: DbService
-  constructor(dbService: DbService) {
-    this.dbService = dbService;
+  constructor(private dbService: DbService, private router: Router) {
    }
 
   ngOnInit() {
-    let svcLoggedIn =  this.dbService.loggedIn;
-    let stgLoggedIn = localStorage.getItem("loggedIn");
-    if(stgLoggedIn == null){
-        localStorage.setItem('loggedIn',svcLoggedIn.toString());
+    localStorage.setItem('loggedIn','true');
+    if(localStorage.getItem("loggedIn") == null || localStorage.getItem("loggedIn") == 'false'){
+        localStorage.setItem('loggedIn','false');
+        this.router.navigate(['/user' , true ]);
+    }else{
+      this.dbService.loggedIn = true;
+      this.router.navigate(['/account' , this.dbService.loggedIn ]);
     }
   }
 

@@ -24,6 +24,6 @@ apiData.subscribe(res => console.log(res.status, res.response));
   providedIn: 'root'
 })
 export class DbService {
-
+  loggedIn: boolean
   constructor() { }
 }

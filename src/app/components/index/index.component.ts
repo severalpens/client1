@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-index',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
-  constructor() { }
+  dbService: DbService
+  constructor(dbService: DbService) {
+    this.dbService = dbService;
+   }
 
   ngOnInit() {
-
+    let svcLoggedIn =  this.dbService.loggedIn;
+    let stgLoggedIn = localStorage.getItem("loggedIn");
+    if(stgLoggedIn == null){
+        localStorage.setItem('loggedIn',svcLoggedIn.toString());
+    }
   }
 
 }

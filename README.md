@@ -1,27 +1,44 @@
-# Client1
+Git - 1/1
+Describe the layout of your git repository and the approach you took for version control.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
+Git version control was used and published via Github.com. 
 
-## Development server
+3 branches were used: develop, test, production. While there was no dev-ops process involved this branch design enables the integration of a SDLC at a later point if required. All development commits were added to develop branch. Production branch is the client facing branch to be deployed. Test branch is used for integration and User Acceptance Testing. Feature branches were not used as they would add unnecessary complexity to a single person project. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Modularization was incorporated into the project by subdividing code into smaller focused files where practical.
 
-## Code scaffolding
+Frequent commits were used with the convention ‘<branch-name>:<category><description (optional)> ‘. Git aliases were used to facilitate regular commits without requirements for individual naming eg ‘misc = "!git add . && git commit -m $(git branch-name)': miscellaneous updates'".
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+Data Structures  - 1/1
+Describe the main data structures used in the program. For example, how the users and groups are represented.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Chain: site 1-* group 1-* channel 1-* member 1-* message
+User: user 1-* member
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+route	Code file	Decription
+/	Index.js	Summary of all api end points
+/api	Api.js	Parent route.
+/api/chain	Chain.js	Storage and retrieval of hierarchically linked objects (chain). The hierarchy consists of: site, group, channel, member, message.
+/api/user	User.js	User login information
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Documentation - REST API - 1/2
+The Angular front end should communicate with the Node.js server using a REST API. describe each route provided, parameters, return values, and what it does.
+
+url (example querystring)	Verb	Body (example)	Description
+/	get		Summary of all api end points
+/api/chain/register	Post		Resgister a new user
+/api/chain/login	post		login
+/api/chain/namecheck?user=super	Get		Validate new username
+
+
+
+Documentation - Angular Architecture - 1/1
+Describe your Angular architecture in tems of components, services, and models.
+
+

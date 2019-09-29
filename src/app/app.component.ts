@@ -14,13 +14,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    localStorage.setItem('loggedIn','true');
     if(localStorage.getItem("loggedIn") == null || localStorage.getItem("loggedIn") == 'false'){
         localStorage.setItem('loggedIn','false');
-        this.router.navigate(['/user' , true ]);
+        this.router.navigate(['/login']);
     }else{
       this.dbService.loggedIn = true;
-      this.router.navigate(['/account' , this.dbService.loggedIn ]);
+      this.router.navigateByUrl('/account');
     }
   }
 

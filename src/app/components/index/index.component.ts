@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
         this.router.navigate(['/user' , true ]);
     }else{
       this.dbService.loggedIn = true;
-      this.router.navigate(['/account' , this.dbService.loggedIn ]);
+      this.router.navigateByUrl('/account');
     }
   }
 

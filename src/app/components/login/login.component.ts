@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angular/forms';
 import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,16 +12,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   username = "super";
   password = "super1";
-
-  constructor(private dbService: DbService, private router: Router, private formsModule: FormsModule) {
-
+  showError: boolean;
+  userid: string;
+  routesubscription: Subscription;
+  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService, private router: Router, private formsModule: FormsModule) {
   }
 
-  ngOnInit() {
-  }
-
-  login(){
-    let result = this.dbService.login(this.username, this.password);
+  ngOnInit(){
+    this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {
+    this.userid = params.get('id');
+    });
+    }
+  ngOnDestroy(){
+    this.routesubscription.unsubscribe();
+    }
+  async login(){
+    let result = await this.dbService.login(this.username, this.password);
+    if(result.valid){
+      this.router.navigateByUrl('/account')
+    }
+    else{
+      this.showError = true;
+    }
     console.log(`LoginComponent.login(): ${result}`);
   }
 

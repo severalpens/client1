@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AccountComponent } from './components/account/account.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DbService } from './services/db.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DbService } from './services/db.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]

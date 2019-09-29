@@ -18,7 +18,7 @@ export class DbService {
      let tmp = new User(username, password,false)
     let result = await this.httpClient.post<UserInterface>('http://localhost:3000/api/user/login',tmp).toPromise();
             this.loggedIn = result.valid;
-            localStorage.setItem('loggedIn',this.loggedIn.toString());
+            sessionStorage.setItem('loggedIn',this.loggedIn.toString());
            return result;
 
 }

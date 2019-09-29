@@ -14,28 +14,15 @@ export class DbService {
     this.loggedIn = false;
    }
 
-   login(username, password){
+   async login  (username, password){
      let tmp = new User(username, password,false)
-    this.httpClient.post<UserInterface>('http://localhost:3000/api/user/login',tmp).subscribe(
-      (result) =>{
+    let result = await this.httpClient.post<UserInterface>('http://localhost:3000/api/user/login',tmp).toPromise();
             this.loggedIn = result.valid;
             localStorage.setItem('loggedIn',this.loggedIn.toString());
-},
-      (err) => {
+           return result;
 
-      },
-      () =>{
-
-      }
-    )
 }
-// login(){
-//   this.httpClient.post('http://localhost:3000/api/user/login').toPromise().then((val) =>{
-//             this.loggedIn = val;
-//             localStorage.setItem('loggedIn',this.loggedIn.toString());
-//   })
-//  }
-// }
+}
 
 
 // // Create an Observable out of a promise

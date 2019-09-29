@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.dbService.login(this.username, this.password);
-    console.log(`LoginComponent.login(): ${this.dbService.loggedIn}`);
+    let result = this.dbService.login(this.username, this.password);
+    console.log(`LoginComponent.login(): ${result}`);
   }
 
 }

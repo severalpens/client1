@@ -20,8 +20,12 @@ export class DbService {
             this.loggedIn = result.valid;
             sessionStorage.setItem('loggedIn',this.loggedIn.toString());
            return result;
-
 }
+async nameCheck(username){
+ let result = await this.httpClient.get<boolean>(`http://localhost:3000/api/user/namecheck?username=${username}`).toPromise();
+        return result;
+}
+
 }
 
 

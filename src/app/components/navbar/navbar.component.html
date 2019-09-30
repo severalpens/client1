@@ -5,15 +5,17 @@
         <a class="nav-link" routerLink="/">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" *ngIf="!dbService.loggedIn" routerLink="/login">Log In</a>
+      <a class="nav-link" style='cursor:pointer' *ngIf="!dbService.loggedInUser" (click)="login()">Log In</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style='cursor:pointer'  *ngIf="!dbService.loggedInUser" (click)="register()">Register</a>
+</li>
+<li class="nav-item">
+      <a class="nav-link" style='cursor:pointer'  *ngIf="dbService.loggedInUser" (click)="logout()" >Log Out</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" *ngIf="dbService.loggedIn" (click)="logout()" routerLink="/index">Log Out</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="dbService.loggedIn"  routerLink="/account">Account</a>
-    </li>
-
+      <a class="nav-link" style='cursor:pointer'  *ngIf="dbService.loggedInUser"  routerLink="/account">Account</a>
+  </li>
   </ul>
 </nav>
 

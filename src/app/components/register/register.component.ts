@@ -12,8 +12,8 @@ import { Subscription } from 'rxjs';
 export class RegisterComponent implements OnInit {
   showError: boolean;
   usernameTaken: boolean;
-  dbService: DbService;
   registerForm: FormGroup;
+  dbService: DbService;
   constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
     this.dbService = dbService;
 

@@ -15,13 +15,14 @@ export class LoginComponent implements OnInit {
   showError: boolean;
   userid: string;
   routesubscription: Subscription;
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService, private router: Router, private formsModule: FormsModule) {
+  dbService: DbService;
+  constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
+    this.dbService = dbService;
+
   }
 
   ngOnInit(){
-    this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {
-    this.userid = params.get('id');
-    });
+      this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {});
     }
   ngOnDestroy(){
     this.routesubscription.unsubscribe();
@@ -29,12 +30,12 @@ export class LoginComponent implements OnInit {
   async login(){
     let result = await this.dbService.login(this.username, this.password);
     if(result.valid){
+      localStorage.setItem("loggedInUser",result.username);
       this.router.navigateByUrl('/account')
     }
     else{
       this.showError = true;
     }
-    console.log(`LoginComponent.login(): ${result}`);
   }
 
 }

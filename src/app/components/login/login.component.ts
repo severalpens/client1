@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   async login(){
     let result = await this.dbService.login(this.username, this.password);
     if(result.valid){
-      localStorage.setItem("loggedInUser",result.username);
       this.router.navigateByUrl('/account')
     }
     else{

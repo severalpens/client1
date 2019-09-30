@@ -23,6 +23,16 @@ export class DbService {
     localStorage.setItem("loggedInUser", this.loggedInUser.toString());
     return result;
   }
+
+  async register(username, password) {
+    let tmp = new User(username, password, true);
+    let result = await this.httpClient
+      .post<UserInterface>("http://localhost:3000/api/user/register", tmp)
+      .toPromise();
+      this.loggedInUser = result.username;
+      localStorage.setItem("loggedInUser", this.loggedInUser.toString());
+      return result;
+  }
   async nameCheck(username) {
     let result = await this.httpClient
       .get<boolean>(

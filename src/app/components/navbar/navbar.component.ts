@@ -23,6 +23,10 @@ export class NavbarComponent implements OnInit {
     this.userid = params.get('id');
     });
     }
+
+    logout(){
+      localStorage.setItem('loggedInUser','')
+    }
   ngOnDestroy(){
     this.routesubscription.unsubscribe();
     }

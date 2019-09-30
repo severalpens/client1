@@ -14,13 +14,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(sessionStorage.getItem("loggedIn") == null || sessionStorage.getItem("loggedIn") == 'false'){
-        sessionStorage.setItem('loggedIn','false');
-       // this.router.navigate(['/login']);
-    }else{
-      this.dbService.loggedIn = true;
-     // this.router.navigateByUrl('/account');
-    }
+
   }
 
   }

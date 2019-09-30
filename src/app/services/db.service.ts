@@ -1,33 +1,35 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, from, interval, Subscription } from 'rxjs'; // use obs$ naming convention
-import { ajax } from 'rxjs/ajax';
-import { catchError, map, tap } from 'rxjs/operators';
-import {User, UserInterface, Chain, ChainInterface} from '../classes/classes';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, of, from, interval, Subscription } from "rxjs"; // use obs$ naming convention
+import { ajax } from "rxjs/ajax";
+import { catchError, map, tap } from "rxjs/operators";
+import { User, UserInterface, Chain, ChainInterface } from "../classes/classes";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DbService {
-  loggedIn: boolean;
-  constructor(private httpClient: HttpClient) {
-    this.loggedIn = false;
-   }
+  loggedInUser: string;
+  constructor(private httpClient: HttpClient) { }
 
-   async login  (username, password){
-     let tmp = new User(username, password,false)
-    let result = await this.httpClient.post<UserInterface>('http://localhost:3000/api/user/login',tmp).toPromise();
-            this.loggedIn = result.valid;
-            sessionStorage.setItem('loggedIn',this.loggedIn.toString());
-           return result;
+  async login(username, password) {
+    let tmp = new User(username, password, false);
+    let result = await this.httpClient
+      .post<UserInterface>("http://localhost:3000/api/user/login", tmp)
+      .toPromise();
+    this.loggedInUser = result.username;
+    sessionStorage.setItem("loggedInUser", this.loggedInUser.toString());
+    return result;
+  }
+  async nameCheck(username) {
+    let result = await this.httpClient
+      .get<boolean>(
+        `http://localhost:3000/api/user/namecheck?username=${username}`
+      )
+      .toPromise();
+    return result;
+  }
 }
-async nameCheck(username){
- let result = await this.httpClient.get<boolean>(`http://localhost:3000/api/user/namecheck?username=${username}`).toPromise();
-        return result;
-}
-
-}
-
 
 // // Create an Observable out of a promise
 // const data = from(fetch('/api/endpoint'));
@@ -42,5 +44,3 @@ async nameCheck(username){
 // const apiData = ajax('/api/data');
 // // Subscribe to create the request
 // apiData.subscribe(res => console.log(res.status, res.response));
-
-

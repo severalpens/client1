@@ -18,7 +18,7 @@ export class DbService {
       .post<UserInterface>("http://localhost:3000/api/user/login", tmp)
       .toPromise();
     this.loggedInUser = result.username;
-    sessionStorage.setItem("loggedInUser", this.loggedInUser.toString());
+    localStorage.setItem("loggedInUser", this.loggedInUser.toString());
     return result;
   }
   async nameCheck(username) {

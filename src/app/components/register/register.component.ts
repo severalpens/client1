@@ -29,10 +29,9 @@ export class RegisterComponent implements OnInit {
       }
     }
 
-    async nameCheck(f: NgForm){
+    async nameCheck(frm: NgForm){
+      var result = await this.dbService.nameCheck(frm.value.username);
       debugger
-      console.log(`RegisterComponent.nameCheck`);
-     var result = await this.dbService.nameCheck(f.value.username);
     }
 
 

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angu
 import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Hero } from '../../classes/classes';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -11,10 +12,21 @@ import { Subscription } from 'rxjs';
 })
 export class AccountComponent implements OnInit {
   dbService: DbService;
-  constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
+  heroes: Hero[] = [];
+  constructor( private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
     this.dbService = dbService;
   }
 
-  ngOnInit() {}
+
+
+  ngOnInit(): void {
+    this.dbService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  }
+
+  gotoDetail(hero: Hero): void {
+    const link = ['/detail', hero.id];
+    this.router.navigate(link);
+  }
 
 }

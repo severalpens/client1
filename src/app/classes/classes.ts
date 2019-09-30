@@ -23,3 +23,7 @@ export class Chain implements ChainInterface {
   admins: Array<String>;
 
 }
+export class Hero {
+  id: number;
+  name: string;
+}

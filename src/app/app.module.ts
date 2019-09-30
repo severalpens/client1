@@ -11,6 +11,8 @@ import { DbService } from './services/db.service';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
+import { HeroesComponent } from './components/heroes/heroes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ChatComponent } from './components/chat/chat.component';
     AccountComponent,
     NavbarComponent,
     RegisterComponent,
-    ChatComponent
+    ChatComponent,
+    HeroDetailComponent,
+    HeroesComponent
   ],
   imports: [
     BrowserModule,

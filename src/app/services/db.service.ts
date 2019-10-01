@@ -43,9 +43,9 @@ export class DbService {
   }
 
 
-  getHeroes() {
+  getGroups() {
     return this.httpClient
-      .get<Hero[]>(this.heroesUrl)
+      .get<Chain[]>(`http://localhost:3000/api/chain/groups?username=${this.loggedInUser}`      )
       .pipe(map(data => data), catchError(this.handleError));
   }
 

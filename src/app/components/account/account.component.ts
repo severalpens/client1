@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angu
 import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Hero } from '../../classes/classes';
+import { Hero, Chain } from '../../classes/classes';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -12,16 +12,14 @@ import { Hero } from '../../classes/classes';
 })
 export class AccountComponent implements OnInit {
   dbService: DbService;
-  heroes: Hero[] = [];
+  groups: Chain[] = [];
   constructor( private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
     this.dbService = dbService;
   }
 
-
-
   ngOnInit(): void {
-    this.dbService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+    this.dbService.getGroups()
+      .subscribe(groups => this.groups = groups);
   }
 
   gotoDetail(hero: Hero): void {

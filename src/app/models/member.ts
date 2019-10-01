@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
 import {ChainInterface} from './chain';
-import {mongoose} from 'mongoose';
+import * as mongoose from 'mongoose'
+//var mongoose = require('mongoose');
 
 export interface MemberInterface {
   username:     String;
@@ -35,10 +35,3 @@ var model = mongoose.model('Member', new mongoose.Schema({
 
 export default model;
 
-
-export class Chain implements ChainInterface {
-  name: String;
-  type: String;
-  parent: String;
-
-}

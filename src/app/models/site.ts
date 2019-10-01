@@ -1,5 +1,6 @@
 import {ChainInterface} from './chain';
-import {mongoose} from 'mongoose'
+import * as mongoose from 'mongoose'
+//var mongoose = require('mongoose');
 
 export class Site implements ChainInterface {
   name: String;

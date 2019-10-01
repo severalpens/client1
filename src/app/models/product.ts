@@ -1,36 +1,29 @@
+//import * as mongoose from 'mongoose'
 var mongoose = require('mongoose');
-import {ChainInterface} from './chain';
-import {mongoose} from 'mongoose';
 
 export interface ProductInterface {
-  username:     String;
-  name:         String;
-  email:        String;
-  birthdate:    String;
-  age:          String;
-  password:     String;
-  valid:        Boolean;
+  Id:             Number;
+  Name:           String;
+  Description:    String;
+  Price:          Number;
+  Units:          Number;
 }
 
 export class Product implements ProductInterface {
-  username:     String;
-  name:         String;
-  email:        String;
-  birthdate:    String;
-  age:          String;
-  password:     String;
-  valid:        Boolean;
+  Id:             Number;
+  Name:           String;
+  Description:    String;
+  Price:          Number;
+  Units:          Number;
 }
 
 
 var model = mongoose.model('Product', new mongoose.Schema({
-  username:     String,
-  name:         String,
-  email:        String,
-  birthdate:    String,
-  age:          String,
-  password:     String,
-  valid:        Boolean
+  Id:             Number,
+  Name:           String,
+  Description:    String,
+  Price:          Number,
+  Units:          Number
 }));
 
 export default model;

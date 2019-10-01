@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angu
 import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Hero, Chain } from '../../classes/classes';
+import { Hero, Chain } from '../../abstractions/classes';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',

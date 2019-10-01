@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http
 import { Observable, of, from, interval, Subscription, throwError as observableThrowError } from "rxjs"; // use obs$ naming convention
 import { ajax } from "rxjs/ajax";
 import { catchError, map, tap } from "rxjs/operators";
-import { User, UserInterface, Chain, ChainInterface } from "../classes/classes";
+import { User, UserInterface, Chain, ChainInterface } from "../abstractions/classes";
 
-import { Hero } from '../classes/classes';
+import { Hero } from '../abstractions/classes';
 @Injectable({
   providedIn: "root"
 })

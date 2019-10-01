@@ -5,18 +5,21 @@ import { ajax } from "rxjs/ajax";
 import { catchError, map, tap } from "rxjs/operators";
 import { User, UserInterface, Chain, ChainInterface } from "../abstractions/classes";
 
-import { Hero } from '../abstractions/classes';
 @Injectable({
   providedIn: "root"
 })
-export class DbService {
+export  class DbService {
   private heroesUrl = 'app/heroes'; // URL to web api
   loggedInUser: string;
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(httpClient: HttpClient) {
+
+   }
+    generateId(){  return 1; }
 
   async login(username, password) {
     let tmp = new User(username, password, false);
-    let result = await this.httpClient
+    //let result = await this.httpClient
       .post<UserInterface>("http://localhost:3000/api/user/login", tmp)
       .toPromise();
     this.loggedInUser = result.username;

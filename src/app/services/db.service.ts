@@ -23,7 +23,7 @@ export  class DbService {
   // get channels
   getChannels() {
     return this.httpClient
-      .get<Array<models.Channel>>(`${API}/api/channels` )
+      .get<Array<models.Channel>>(`${API}/channels` )
       .pipe(map(data => data));
   }
 
@@ -143,7 +143,7 @@ deleteGroup(group: models.Group) {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const url = `${API}/api/groups/${group.id}`;
+  const url = `${API}/groups/${group.id}`;
 
   return this.httpClient.delete<models.Group>(url).pipe(catchError(this.handleError));
 }
@@ -154,7 +154,7 @@ deleteChannel(channel: models.Channel) {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const url = `${API}/api/channels/${channel.id}`;
+  const url = `${API}//channels/${channel.id}`;
 
   return this.httpClient.delete<models.Channel>(url).pipe(catchError(this.handleError));
 }
@@ -164,7 +164,7 @@ deleteMember(member: models.Member) {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const url = `${API}/api/members/${member.id}`;
+  const url = `${API}/members/${member.id}`;
 
   return this.httpClient.delete<models.Member>(url).pipe(catchError(this.handleError));
 }
@@ -174,7 +174,7 @@ deleteMessage(message: models.Message) {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const url = `${API}/api/messages/${message.id}`;
+  const url = `${API}/messages/${message.id}`;
 
   return this.httpClient.delete<models.Message>(url).pipe(catchError(this.handleError));
 }
@@ -185,7 +185,7 @@ deleteProduct(product: models.Product) {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const url = `${API}/api/products/${product.id}`;
+  const url = `${API}/products/${product.id}`;
 
   return this.httpClient.delete<models.Product>(url).pipe(catchError(this.handleError));
 }
@@ -198,7 +198,7 @@ deleteProduct(product: models.Product) {
     });
 
     return this.httpClient
-      .post<models.Group>(`${API}/api/groups/${group.id}`, group)
+      .post<models.Group>(`${API}/groups/${group.id}`, group)
       .pipe(catchError(this.handleError));
   }
 
@@ -210,7 +210,7 @@ deleteProduct(product: models.Product) {
     });
 
     return this.httpClient
-      .post<models.Channel>(`${API}/api/channels/${channel.id}`, channel)
+      .post<models.Channel>(`${API}/channels/${channel.id}`, channel)
       .pipe(catchError(this.handleError));
   }
 
@@ -222,7 +222,7 @@ deleteProduct(product: models.Product) {
     });
 
     return this.httpClient
-      .post<models.Member>(`${API}/api/members/${member.id}`, member)
+      .post<models.Member>(`${API}/members/${member.id}`, member)
       .pipe(catchError(this.handleError));
   }
 
@@ -235,7 +235,7 @@ deleteProduct(product: models.Product) {
     });
 
     return this.httpClient
-      .post<models.Message>(`${API}/api/messages/${message.id}`, message)
+      .post<models.Message>(`${API}/messages/${message.id}`, message)
       .pipe(catchError(this.handleError));
   }
 
@@ -247,7 +247,7 @@ deleteProduct(product: models.Product) {
     });
 
     return this.httpClient
-      .post<models.Product>(`${API}/api/products/${product.id}`, product)
+      .post<models.Product>(`${API}/products/${product.id}`, product)
       .pipe(catchError(this.handleError));
   }
 
@@ -262,7 +262,7 @@ deleteProduct(product: models.Product) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${API}/api/groups/${group.id}`;
+    const url = `${API}/groups/${group.id}`;
 
     return this.httpClient.put<models.Group>(url, group).pipe(catchError(this.handleError));
   }
@@ -273,7 +273,7 @@ deleteProduct(product: models.Product) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${API}/api/channels/${channel.id}`;
+    const url = `${API}/channels/${channel.id}`;
 
     return this.httpClient.put<models.Channel>(url, channel).pipe(catchError(this.handleError));
   }
@@ -285,7 +285,7 @@ deleteProduct(product: models.Product) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${API}/api/members/${member.id}`;
+    const url = `${API}/members/${member.id}`;
 
     return this.httpClient.put<models.Member>(url, member).pipe(catchError(this.handleError));
   }
@@ -298,7 +298,7 @@ deleteProduct(product: models.Product) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${API}/api/messages/${message.id}`;
+    const url = `${API}/messages/${message.id}`;
 
     return this.httpClient.put<models.Message>(url, message).pipe(catchError(this.handleError));
   }
@@ -310,40 +310,13 @@ deleteProduct(product: models.Product) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = `${API}/api/products/${product.id}`;
+    const url = `${API}/products/${product.id}`;
 
     return this.httpClient.put<models.Product>(url, product).pipe(catchError(this.handleError));
   }
 
 
 }
-
-//   // Add new Hero
-//   private post(hero: Hero) {
-//     const headers = new Headers({
-//       'Content-Type': 'application/json'
-//     });
-
-//     return this.httpClient
-//       .post<Hero>(this.heroesUrl, hero)
-//       .pipe(catchError(this.handleError));
-//   }
-
-//   // Update existing Hero
-//   private put(hero: Hero) {
-//     const headers = new Headers();
-//     headers.append('Content-Type', 'application/json');
-
-//     const url = `${this.heroesUrl}/${hero.id}`;
-
-//     return this.httpClient.put<Hero>(url, hero).pipe(catchError(this.handleError));
-//   }
-
-//   private handleError(res: HttpErrorResponse | any) {
-//     console.error(res.error || res.body.error);
-//     return observableThrowError(res.error || 'Server error');
-//   }
-// }
 
 // // Create an Observable out of a promise
 // const data = from(fetch('/api/endpoint'));
@@ -381,12 +354,3 @@ deleteProduct(product: models.Product) {
 // }
 
 
-
-// delete(hero: Hero) {
-//   const headers = new Headers();
-//   headers.append('Content-Type', 'application/json');
-
-//   const url = `${this.heroesUrl}/${hero.id}`;
-
-//   return this.httpClient.delete<Hero>(url).pipe(catchError(this.handleError));
-// }

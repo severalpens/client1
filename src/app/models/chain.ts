@@ -1,5 +1,3 @@
-import * as mongoose from 'mongoose'
-//var mongoose = require('mongoose');
 
 export interface ChainInterface {
   id:       Number;
@@ -17,12 +15,3 @@ export class Chain implements ChainInterface {
   members:  Object;
 }
 
-var model = mongoose.model('Chain', new mongoose.Schema({
-  id:       Number,
-  name:     String,
-  type:     String,
-  parent:   String,
-  members:  Object,
-}));
-
-export default model;

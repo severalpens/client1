@@ -1,12 +1,22 @@
 <div class="col-md-6" style="margin:3rem">
   <form id="groupdetailform" name="groupdetailform" class="container-fluid" (ngSubmit)="submit()" novalidate>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="id">Id</label>
-      <input type="text" class="form-control" name="id" id="id" [(ngModel)]="group.id" >
-    </div>
+      <input type="number" class="form-control" name="id" id="id" [(ngModel)]="group.id" >
+    </div> -->
     <div class="form-group">
       <label for="name">name</label>
       <input type="text" class="form-control" name="name" name="name" [(ngModel)]="group.name" >
+    </div>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>group</button>
+        <button ngbDropdownItem>channel</button>
+        <button ngbDropdownItem>member</button>
+        <button ngbDropdownItem>message</button>
+        <button ngbDropdownItem>product</button>
+      </div>
     </div>
     <div class="form-group">
       <label for="type">type</label>
@@ -23,9 +33,6 @@
   <div class="form-group">
           <button type="text"  name="submitbutton" id="submitbutton"   class="btn btn-primary" >Submit</button>
         </div>
-        <div class="form-group">
-          <p name="showError" id="showError">Invalid Register Attempt. </p>
-      </div>
 </form>
   </div>
 

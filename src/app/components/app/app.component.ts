@@ -15,8 +15,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('loggedInUser')){
-      this.router.navigateByUrl('/account')
-      this.dbService.loggedInUser = localStorage.getItem('loggedInUser');
     }
   }
 

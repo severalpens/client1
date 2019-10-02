@@ -28,13 +28,13 @@ export class LoginComponent implements OnInit {
     this.routesubscription.unsubscribe();
     }
   async login(){
-    let result = await this.dbService.login(this.username, this.password);
-    if(result.valid){
-      this.router.navigateByUrl('/account')
-    }
-    else{
-      this.showError = true;
-    }
+    // let result = await this.dbService.login(this.username, this.password);
+    // if(result.valid){
+    //   this.router.navigateByUrl('/account')
+    // }
+    // else{
+    //   this.showError = true;
+    // }
   }
 
 }

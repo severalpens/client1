@@ -48,14 +48,19 @@ export  class DbService {
       .pipe(map(data => data));
   }
 
-
-
-  // get site
-  getSite() {
+  // get sites
+  getSites() {
     return this.httpClient
       .get<Array<models.Site>>(`${API}/site` )
       .pipe(map(data => data));
   }
+
+ // get group
+ getSite(id: number): Observable<models.Site> {
+  return this.getSites().pipe(
+    map(sites => sites.find(site => site.id === id))
+  );
+}
 
   // get group
   getGroup(id: number): Observable<models.Group> {
@@ -192,7 +197,7 @@ deleteProduct(product: models.Product) {
 
 
 // post group
-  private postGroup(group: models.Group) {
+  postGroup(group: models.Group) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -204,7 +209,7 @@ deleteProduct(product: models.Product) {
 
 
 // post channel
-  private postChannel(channel: models.Channel) {
+  postChannel(channel: models.Channel) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -216,7 +221,7 @@ deleteProduct(product: models.Product) {
 
 
 // post member
-  private postMember(member: models.Member) {
+  postMember(member: models.Member) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -229,7 +234,7 @@ deleteProduct(product: models.Product) {
 
 
 // post message
-  private postMessage(message: models.Message) {
+  postMessage(message: models.Message) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -241,7 +246,7 @@ deleteProduct(product: models.Product) {
 
 
 // post product
-  private postProduct(product: models.Product) {
+  postProduct(product: models.Product) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -251,14 +256,14 @@ deleteProduct(product: models.Product) {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(res: HttpErrorResponse | any) {
+  handleError(res: HttpErrorResponse | any) {
     console.error(res.error || res.body.error);
     return observableThrowError(res.error || 'Server error');
   }
 
 
   // Update existing group
-  private putGroup(group: models.Group) {
+  putGroup(group: models.Group) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -269,7 +274,7 @@ deleteProduct(product: models.Product) {
 
 
 // Update existing channel
-  private putChannel(channel: models.Channel) {
+  putChannel(channel: models.Channel) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -281,7 +286,7 @@ deleteProduct(product: models.Product) {
 
 
 // Update existing member
-  private putMember(member: models.Member) {
+  putMember(member: models.Member) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -294,7 +299,7 @@ deleteProduct(product: models.Product) {
 
 
 // Update existing message
-  private putMessage(message: models.Message) {
+  putMessage(message: models.Message) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -306,7 +311,7 @@ deleteProduct(product: models.Product) {
 
 
 // Update existing product
-  private putProduct(product: models.Product) {
+  putProduct(product: models.Product) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -332,25 +337,5 @@ deleteProduct(product: models.Product) {
 // // Subscribe to create the request
 // apiData.subscribe(res => console.log(res.status, res.response));
 
-
-
-
-// async register(username, password) {
-//   let tmp = new User(username, password, true);
-//   let result = await this.httpClient
-//     .post<UserInterface>("http://localhost:3000/api/user/register", tmp)
-//     .toPromise();
-//     this.loggedInUser = result.username;
-//     localStorage.setItem("loggedInUser", this.loggedInUser.toString());
-//     return result;
-// }
-// async nameCheck(username) {
-//   let result = await this.httpClient
-//     .get<boolean>(
-//       `http://localhost:3000/api/user/namecheck?username=${username}`
-//     )
-//     .toPromise();
-//   return result;
-// }
 
 

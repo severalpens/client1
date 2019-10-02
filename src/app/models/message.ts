@@ -1,4 +1,3 @@
-import {get} from 'http'
 export interface MessageInterface{
   id:         Number,
   timestamp:  Number,

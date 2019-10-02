@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit {
   routesubscription: Subscription;
   dbService: DbService
+  loggedInUser: String;
   constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
     this.dbService = dbService;
   }
@@ -22,21 +23,21 @@ export class NavbarComponent implements OnInit {
     }
 
     login(){
-      this.router.navigateByUrl('/login');
+     // this.router.navigateByUrl('/login');
     }
 
     logout(){
-      this.dbService.loggedInUser = '';
-      localStorage.setItem('loggedInUser','');
-      this.router.navigateByUrl('/');
+      // this.loggedInUser = '';
+      // localStorage.setItem('loggedInUser','');
+      // this.router.navigateByUrl('/');
 
     }
     register(){
-      this.router.navigateByUrl('/register');
+      // this.router.navigateByUrl('/register');
     }
 
 
   ngOnDestroy(){
-    this.routesubscription.unsubscribe();
+    // this.routesubscription.unsubscribe();
     }
 }

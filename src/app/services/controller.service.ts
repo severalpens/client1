@@ -36,8 +36,8 @@ export  class ControllerService implements OnInit {
     this.currentMember =        new models.Member;
     this.currentMessage =       new models.Message;
     this.currentProduct =       new models.Product;
-
    }
+
   hydrateObjects(){
     this.dbService.getGroups().subscribe(x => this.groups = x);
     this.dbService.getChannels().subscribe(x => this.channels = x);
@@ -52,6 +52,7 @@ export  class ControllerService implements OnInit {
     this.dbService.getProduct(1).subscribe(x => this.currentProduct = x);
     this.dbService.getGroup(1).subscribe(x => this.currentGroup = x);
   }
+
 ngOnInit(){
   this.hydrateObjects()
 }
@@ -74,4 +75,4 @@ ngOnInit(){
   //   return result;
   // }
 
-
+}

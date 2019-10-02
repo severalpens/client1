@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+import * as mongoose from 'mongoose'
+//var mongoose = require('mongoose');
 
 export interface ChainInterface {
   id:       Number;

@@ -48,6 +48,6 @@ export class RegisterComponent implements OnInit {
   //     this.showError = true;
   //   }
   //   console.log(`LoginComponent.login(): ${result}`);
-  // }
+   }
 
 }

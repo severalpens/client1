@@ -1,5 +1,5 @@
 <div class="col-md-6" style="margin:3rem">
-  <form id="groupdetailform" name="groupdetailform" class="container-fluid" #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+  <form id="groupdetailform" name="groupdetailform" class="container-fluid" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
       <label for="id">Id</label>
       <input type="text" class="form-control" name="id" id="id" [(ngModel)]="group.id" >
@@ -23,7 +23,7 @@
   <div class="form-group">
           <button type="text"  name="submitbutton" id="submitbutton"   class="btn btn-primary" >Submit</button>
         </div>
-        <div class="form-group" *ngIf="showError">
+        <div class="form-group">
           <p name="showError" id="showError">Invalid Register Attempt. </p>
       </div>
 </form>

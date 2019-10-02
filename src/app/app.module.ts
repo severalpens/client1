@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { GroupDetailComponent } from './components/detail/group-detail/group-detail.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
-    NgbModule
+    CommonModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]

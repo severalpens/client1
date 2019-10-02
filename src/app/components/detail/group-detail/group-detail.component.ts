@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angular/forms';
 import { DbService } from 'src/app/services/db.service';
-import { ActivatedRoute } from '@angular/router';
-import { Group } from 'src/app/models/group';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import {Group} from '../../../models/group';
 @Component({
   selector: 'app-group-detail',
   templateUrl: './group-detail.component.html',
@@ -10,17 +12,23 @@ import { Group } from 'src/app/models/group';
 })
 export class GroupDetailComponent implements OnInit {
   group: Group;
-  constructor(
-    private dbService: DbService,
-    private route: ActivatedRoute
-  ) {}
+  types: Array<String>;
 
-  ngOnInit() {
-    this.group = new Group();
+  constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
+
+
+  }
+
+    ngOnInit() {
+      //this.group = new Group();
+      this.group = new Group();
+      this.group.name = "asdfa"
+      this.group.types = ['sfds','sdfs']
+      this.types = ['sfds','sdfs']
   }
 
   submit(){
-    this.dbService.postGroup(this.group).subscribe(x => this.group = x);
+    //this.dbService.postGroup(this.group).subscribe(x => this.group = x);
 
   }
 

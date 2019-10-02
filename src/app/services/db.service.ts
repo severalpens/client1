@@ -203,7 +203,7 @@ deleteProduct(product: models.Product) {
     });
 
     return this.httpClient
-      .post<models.Group>(`${API}/groups/${group.id}`, group)
+      .post<models.Group>(`${API}/group`, group)
       .pipe(catchError(this.handleError));
   }
 

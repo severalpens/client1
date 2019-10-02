@@ -3,6 +3,10 @@ import * as mongoose from 'mongoose'
 //var mongoose = require('mongoose');
 
 export interface MemberInterface {
+  id:           Number;
+  type:         String;
+  parent:       String;
+  members:      Object;
   username:     String;
   name:         String;
   email:        String;
@@ -12,7 +16,11 @@ export interface MemberInterface {
   valid:        Boolean;
 }
 
-export class Member implements MemberInterface {
+export class Member implements MemberInterface, ChainInterface {
+  id:           Number;
+  type:         'member';
+  parent:       String;
+  members:      Object;
   username:     String;
   name:         String;
   email:        String;
@@ -24,6 +32,10 @@ export class Member implements MemberInterface {
 
 
 var model = mongoose.model('Member', new mongoose.Schema({
+  id:           Number,
+  type:         String,
+  parent:       String,
+  members:      Object,
   username:     String,
   name:         String,
   email:        String,

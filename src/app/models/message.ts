@@ -1,6 +1,6 @@
 import {get} from 'http'
 export interface MessageInterface{
-  id:         object,
+  id:         Number,
   timestamp:  Number,
   author:     String,
   value:      String,
@@ -11,7 +11,7 @@ export class Message implements MessageInterface{
   constructor(){
     this.timestamp = Date.now();
   }
-  id:         object;
+  id:         Number;
   timestamp:  Number;
   author:     String;
   value:      String;

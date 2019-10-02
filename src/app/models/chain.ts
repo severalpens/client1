@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 export interface ChainInterface {
+  id:       Number;
   name:     String;
   type:     String;
   parent:   String;
@@ -8,6 +9,7 @@ export interface ChainInterface {
 }
 
 export class Chain implements ChainInterface {
+  id:       Number;
   name:     String;
   type:     String;
   parent:   String;
@@ -15,6 +17,7 @@ export class Chain implements ChainInterface {
 }
 
 var model = mongoose.model('Chain', new mongoose.Schema({
+  id:       Number,
   name:     String,
   type:     String,
   parent:   String,

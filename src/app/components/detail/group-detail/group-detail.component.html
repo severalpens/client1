@@ -16,28 +16,31 @@
 
     <div class="form-group">
       <label for="type">type</label>
-      <select class="form-control" id="type" name="type">
+      <select class="form-control" id="type" name="type" [(ngModel)]="group.type">
         <option *ngFor="let type of types" [value]="type">{{type}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="parent">parent</label>
-      <input type="text" class="form-control" name="parent" parent="parent" [(ngModel)]="group.parent" >
+      <select class="form-control" id="parent" name="parent" [(ngModel)]="group.parent">
+        <option *ngFor="let parent of parents" [value]="parent">{{parent}}</option>
+      </select>
     </div>
+
+
     <div class="form-group">
       <label for="members">members</label>
-      <input type="text" class="form-control" name="members" members="members" [(ngModel)]="group.members" >
+      <select class="form-control" id="members" name="members" [(ngModel)]="group.members" multiple>
+        <option *ngFor="let member of members" [value]="member">{{member}}</option>
+      </select>
     </div>
+
   <div class="form-group">
           <button type="text"  name="submitbutton" id="submitbutton"   class="btn btn-primary" >Submit</button>
         </div>
 </form>
 
-<div class="cart-item" *ngFor="let type of types">
-  <span>asd </span>
-  <span>assad</span>
-</div>
   </div>
 
 

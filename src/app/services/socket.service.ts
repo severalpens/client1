@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import * as io from 'socket.io-client';
-const SERVER_URL = 'http://localhost:3000';
+import { DbService } from './db.service';
+import { Message } from '../models/models';
+
+const SERVER_URL = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
   private socket;
-  constructor() { }
+  constructor(private dbService: DbService) { }
 
   public initSocket(): void {
     this.socket = io(SERVER_URL);
 
   }
 
-  public send(message: string): void {
+  public send(message: Message): void {
+    this.dbService.saveMessage(message);
     this.socket.emit('message', message);
   }
 

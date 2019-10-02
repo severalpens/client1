@@ -6,6 +6,6 @@ export class Group implements ChainInterface {
   type:          'group';
   types:          Array<String>;
   parent:         String;
-  members?:        Object;
+  members?:        Array<String>;
 }
 

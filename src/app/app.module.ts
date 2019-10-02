@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { GroupDetailComponent } from './components/detail/group-detail/group-detail.component';
+import { HomeComponent } from './components/home/home.component';
+import { ControllerService } from './services/controller.service';
+import { SocketService } from './services/socket.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { GroupDetailComponent } from './components/detail/group-detail/group-det
     RegisterComponent,
     ChatComponent,
     GroupDetailComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { GroupDetailComponent } from './components/detail/group-detail/group-det
     ReactiveFormsModule,
     CommonModule
   ],
-  providers: [DbService],
+  providers: [DbService, ControllerService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

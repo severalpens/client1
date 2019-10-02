@@ -5,6 +5,7 @@ import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {Group} from '../../../models/group';
+import { ControllerService } from 'src/app/services/controller.service';
 @Component({
   selector: 'app-group-detail',
   templateUrl: './group-detail.component.html',
@@ -13,22 +14,22 @@ import {Group} from '../../../models/group';
 export class GroupDetailComponent implements OnInit {
   group: Group;
   types: Array<String>;
-
-  constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
+  parents: Array<String>;
+  members: Array<String>;
+  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
 
 
   }
 
     ngOnInit() {
-      //this.group = new Group();
       this.group = new Group();
-      this.group.name = "asdfa"
-      this.group.types = ['sfds','sdfs']
-      this.types = ['sfds','sdfs']
+      this.types = ['Group','Channel', 'Member', 'Message', 'Product'];
+      this.parents = ['Chat'];
+      this.members = ['Chad', 'Bruce','David','super'];
   }
 
   submit(){
-    //this.dbService.postGroup(this.group).subscribe(x => this.group = x);
+    this.dbService.postGroup(this.group).subscribe(x => this.group = x);
 
   }
 

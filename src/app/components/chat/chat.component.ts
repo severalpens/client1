@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
+import { Message, MessageInterface } from 'src/app/models/models';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 
 
@@ -14,12 +16,13 @@ export class ChatComponent implements OnInit {
   messages: string[] = [];
   ioConnection: any;
 
-
-
+  message: MessageInterface;
+  timestamp: Date;
   constructor(private socketService: SocketService) {
    }
 
   ngOnInit() {
+    this.timestamp = new Date()
     this.initToConnection();
 
   }
@@ -36,9 +39,18 @@ export class ChatComponent implements OnInit {
   public chat() {
 
     if(this.messagecontent) {
+      this.message = new Message();
+      this.message.timestamp = Math.floor(Date.now() / 10)
+      this.message.id = 1;
+      this.message.author = 'super';
+      this.message.content = 'this is a test';
+      this.message.parent = 'Channel1';
+      this.message.visible = true;
+
       // check there is a mesage to send
-      this.socketService.send(this.messagecontent);
-      this.messagecontent = null;
+      console.log(this.message)
+      this.socketService.send(this.message);
+      this.message = null;
 
     }else{
       console.log("no message");

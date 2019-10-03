@@ -11,19 +11,33 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  userid: string;
   routesubscription: Subscription;
   dbService: DbService
+  loggedInUser: String;
   constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
     this.dbService = dbService;
   }
 
   ngOnInit(){
-    this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {
-    this.userid = params.get('id');
-    });
+    this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {});
     }
+
+    login(){
+      this.router.navigateByUrl('/login');
+    }
+
+    logout(){
+      // this.loggedInUser = '';
+      // localStorage.setItem('loggedInUser','');
+      // this.router.navigateByUrl('/');
+
+    }
+    register(){
+      // this.router.navigateByUrl('/register');
+    }
+
+
   ngOnDestroy(){
-    this.routesubscription.unsubscribe();
+    // this.routesubscription.unsubscribe();
     }
 }

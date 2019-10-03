@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angu
 import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ControllerService } from 'src/app/services/controller.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,26 +16,20 @@ export class LoginComponent implements OnInit {
   showError: boolean;
   userid: string;
   routesubscription: Subscription;
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService, private router: Router, private formsModule: FormsModule) {
+  loginResult: any;
+  constructor(private activatedRoute: ActivatedRoute, private  controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
   }
 
   ngOnInit(){
-    this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {
-    this.userid = params.get('id');
-    });
     }
+
   ngOnDestroy(){
     this.routesubscription.unsubscribe();
     }
-  async login(){
-    let result = await this.dbService.login(this.username, this.password);
-    if(result.valid){
-      this.router.navigateByUrl('/account')
-    }
-    else{
-      this.showError = true;
-    }
-    console.log(`LoginComponent.login(): ${result}`);
+
+  login(){
+    this.loginResult = this.controllerService.login(this.username, this.password);
+    console.log(this.loginResult);
   }
 
 }

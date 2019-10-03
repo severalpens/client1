@@ -2,24 +2,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
 import { AccountComponent } from './components/account/account.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DbService } from './services/db.service';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { GroupDetailComponent } from './components/detail/group-detail/group-detail.component';
+import { HomeComponent } from './components/home/home.component';
+import { ControllerService } from './services/controller.service';
+import { SocketService } from './services/socket.service';
+import { SocketTestComponent } from './components/sockettest/sockettest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
     LoginComponent,
     AccountComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChatComponent,
+    GroupDetailComponent,
+    HomeComponent,
+    SocketTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,7 @@ import { RegisterComponent } from './components/register/register.component';
     ReactiveFormsModule,
     CommonModule
   ],
-  providers: [DbService],
+  providers: [DbService, ControllerService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

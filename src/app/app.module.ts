@@ -15,6 +15,7 @@ import { GroupDetailComponent } from './components/detail/group-detail/group-det
 import { HomeComponent } from './components/home/home.component';
 import { ControllerService } from './services/controller.service';
 import { SocketService } from './services/socket.service';
+import { SockettestComponent } from './components/sockettest/sockettest.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SocketService } from './services/socket.service';
     ChatComponent,
     GroupDetailComponent,
     HomeComponent,
+    SockettestComponent,
   ],
   imports: [
     BrowserModule,

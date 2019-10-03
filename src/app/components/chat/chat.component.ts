@@ -13,16 +13,17 @@ import { Timestamp } from 'rxjs/internal/operators/timestamp';
 export class ChatComponent implements OnInit {
 
   messagecontent: string = "";
-  messages: Array<Message>;
-  ioConnection: any;
+  messagescontent: string[] = [];
 
   message: MessageInterface;
-  timestamp: Date;
+  messages: Array<MessageInterface>;
+
+  ioConnection: any;
+
   constructor(private socketService: SocketService) {
    }
 
   ngOnInit() {
-    this.timestamp = new Date()
     this.initToConnection();
     this.messages = new Array<Message>();
     console.log('ngOnInit');
@@ -31,10 +32,8 @@ export class ChatComponent implements OnInit {
   private initToConnection() {
     this.socketService.initSocket();
     this.ioConnection = this.socketService.onMessage()
-    .subscribe((message: Message) => {
-      let strMessage = JSON.stringify(message)
-      console.log(`initToConnection.subscribe ${strMessage}`);
-            this.messages.push(message);
+    .subscribe((message: string) => {
+            this.messagescontent.push(message);
     });
   }
 
@@ -51,7 +50,7 @@ export class ChatComponent implements OnInit {
       let strMessage = JSON.stringify(this.message)
       // check there is a mesage to send
       console.log(`chat(): ${strMessage}`);
-      this.socketService.send(this.message);
+      this.socketService.send(this.messagecontent);
       this.message = null;
 
     }else{

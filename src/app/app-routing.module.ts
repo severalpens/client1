@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: AccountComponent },
   { path: 'group-detail', component: GroupDetailComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat/:group/:channel/:member', component: ChatComponent },
   { path: '', component: HomeComponent },
   { path: 'sockettest', component: SocketTestComponent },
   { path: '', component: HomeComponent },

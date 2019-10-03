@@ -4,7 +4,7 @@ export interface ChainInterface {
   name:     String;
   type:     String;
   parent:   String;
-  members?:  Object;
+  members?:  Array<string>;
 }
 
 export class Chain implements ChainInterface {
@@ -12,6 +12,6 @@ export class Chain implements ChainInterface {
   name:     String;
   type:     String;
   parent:   String;
-  members?:  Object;
+  members:  Array<string>;
 }
 

@@ -16,14 +16,13 @@ export class GroupDetailComponent implements OnInit {
   types: Array<String>;
   parents: Array<String>;
   members: Array<String>;
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
+  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,private controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
   }
 
     ngOnInit() {
       this.group = new Group();
       this.types = ['Group','Channel', 'Member', 'Message', 'Product'];
-      this.parents = ['Chat'];
-      this.members = ['Chad', 'Bruce','David','super'];
+      this.members = this.controllerService.currentSite.members.map(val => val.split(':')[0])
   }
 
   submit(){

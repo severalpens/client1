@@ -15,7 +15,6 @@ export  class ControllerService implements OnInit {
   members:              models.Member[];
   messages:             models.Message[];
   products:             models.Product[];
-  sites:                models.Site[];
   currentSite:          models.Site;
   currentGroup:         models.Group;
   currentChannel:       models.Channel;
@@ -29,7 +28,6 @@ export  class ControllerService implements OnInit {
     this.members =              new Array<models.Member>();
     this.messages =             new Array<models.Message>();
     this.products =             new Array<models.Product>();
-    this.sites =                new Array<models.Site>();
     this.currentSite =          new models.Site;
     this.currentGroup =         new models.Group;
     this.currentChannel =       new models.Channel;
@@ -39,31 +37,22 @@ export  class ControllerService implements OnInit {
    }
 
   hydrateObjects(){
+    this.dbService.getSite('chat').subscribe(x => this.currentSite = x);
     this.dbService.getGroups().subscribe(x => this.groups = x);
     this.dbService.getChannels().subscribe(x => this.channels = x);
-    this.dbService.getMembers().subscribe(x => this.members = x);
-    this.dbService.getMessages().subscribe(x => this.messages = x);
     this.dbService.getProducts().subscribe(x => this.products = x);
-    this.dbService.getSites().subscribe(x => this.sites = x);
-    this.dbService.getSite(1).subscribe(x => this.currentSite = x);
-    this.dbService.getChannel(1).subscribe(x => this.currentChannel = x);
-    this.dbService.getMember(1).subscribe(x => this.currentMember = x);
-    this.dbService.getMessage(1).subscribe(x => this.currentMessage = x);
-    this.dbService.getProduct(1).subscribe(x => this.currentProduct = x);
-    this.dbService.getGroup(1).subscribe(x => this.currentGroup = x);
   }
 
 ngOnInit(){
-  this.hydrateObjects()
 }
 
-login(username, password){
-  let props = {username, password};
 
-  let result = this.dbService.post('/login',props).subscribe(
+
+login(username, password){
+  let result = this.dbService.post('/login',{username, password}).subscribe(
     (data:any) => {
       if(data){
-        this.dbService.getMember(username).subscribe(x => this.currentMember = x);
+       this.hydrateObjects()
       }
     }
   )

@@ -20,6 +20,11 @@ export  class DbService {
       console.log(result);
       return result
   }
+  getFilteredCollection(){
+
+  }
+
+
 
   get(path: string, props: Object){
     path += '?'
@@ -73,9 +78,9 @@ export  class DbService {
   }
 
  // get group
- getSite(id: number): Observable<models.Site> {
+ getSite(name: string): Observable<models.Site> {
   return this.getSites().pipe(
-    map(sites => sites.find(site => site.id === id))
+    map(sites => sites.find(site => site.name === name))
   );
 }
 
@@ -94,9 +99,9 @@ export  class DbService {
   }
 
   // get member
-  getMember(id: number): Observable<models.Member> {
+  getMember(user: string): Observable<models.Member> {
     return this.getMembers().pipe(
-      map(members => members.find(member => member.id === id))
+      map(members => members.find(member => member.name === user))
     );
   }
 

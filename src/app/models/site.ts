@@ -5,5 +5,5 @@ export class Site implements ChainInterface {
   name: String;
   type: 'site';
   parent: String;
-  members: Object;
+  members: Array<string>;
 }

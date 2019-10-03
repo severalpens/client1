@@ -6,7 +6,7 @@ export interface ChannelInterface {
   name:       String;
   type:       String;
   parent:     String;
-  members:    Object;
+  members:    Array<String>;
   messages:   Array<Object>;
 }
 
@@ -15,7 +15,7 @@ export class Channel implements ChannelInterface, ChainInterface {
   name:       String;
   type:       'channel';
   parent:     String;
-  members:    Object;
+  members:    Array<String>;
   messages:   Array<Message>;
 }
 

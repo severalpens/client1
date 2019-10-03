@@ -1,10 +1,10 @@
-import { Chain, ChainInterface } from "../models/chain";
-import {  Site } from "../models/Site";
-import { Group } from "../models/group";
-import { Channel, ChannelInterface } from "../models/channel";
-import { Member, MemberInterface } from "../models/member";
-import { Message, MessageInterface } from "../models/message";
-import { Product, ProductInterface } from "../models/product";
+import { Chain, ChainInterface } from "./chain";
+import {  Site } from "./Site";
+import { Group } from "./group";
+import { Channel, ChannelInterface } from "./channel";
+import { Member, MemberInterface } from "./member";
+import { Message, MessageInterface } from "./message";
+import { Product, ProductInterface } from "./product";
 export  {
   Chain,
   ChainInterface,

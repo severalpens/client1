@@ -26,6 +26,7 @@ export class GroupDetailComponent implements OnInit {
   }
 
   submit(){
+
     this.dbService.postGroup(this.group).subscribe(x => this.group = x);
 
   }

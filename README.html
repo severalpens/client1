@@ -1,0 +1,982 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Table of Contents (Formal design)</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-link:"TOC 1 Char";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	text-transform:uppercase;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-link:"TOC 2 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:10.0pt;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	font-variant:small-caps;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-link:"TOC 3 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:20.0pt;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	font-style:italic;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	font-size:9.0pt;
+	font-family:"Times New Roman",serif;
+	color:#1F497D;
+	font-style:italic;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma",sans-serif;}
+span.MsoPlaceholderText
+	{color:gray;}
+p.Level3, li.Level3, div.Level3
+	{mso-style-name:"Level 3";
+	mso-style-link:"Level 3 Char Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:20.0pt;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	font-style:italic;}
+p.TOCTitle, li.TOCTitle, div.TOCTitle
+	{mso-style-name:"TOC Title";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.TOC3Char
+	{mso-style-name:"TOC 3 Char";
+	mso-style-link:"TOC 3";
+	font-style:italic;}
+span.Level3CharChar
+	{mso-style-name:"Level 3 Char Char";
+	mso-style-link:"Level 3";
+	font-family:"Times New Roman",serif;
+	font-style:italic;}
+p.Level1, li.Level1, div.Level1
+	{mso-style-name:"Level 1";
+	mso-style-link:"Level 1 Char";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.TOC1Char
+	{mso-style-name:"TOC 1 Char";
+	mso-style-link:"TOC 1";
+	text-transform:uppercase;
+	font-weight:bold;}
+span.Level1Char
+	{mso-style-name:"Level 1 Char";
+	mso-style-link:"Level 1";
+	font-family:"Times New Roman",serif;
+	text-transform:uppercase;
+	font-weight:bold;}
+p.Level2, li.Level2, div.Level2
+	{mso-style-name:"Level 2";
+	mso-style-link:"Level 2 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:10.0pt;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	font-variant:small-caps;
+	color:black;}
+span.TOC2Char
+	{mso-style-name:"TOC 2 Char";
+	mso-style-link:"TOC 2";
+	font-variant:small-caps;}
+span.Level2Char
+	{mso-style-name:"Level 2 Char";
+	mso-style-link:"Level 2";
+	font-family:"Times New Roman",serif;
+	font-variant:small-caps;
+	color:black;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-AU>
+
+<div class=WordSection1>
+
+<p class=TOCTitle><span lang=EN-US>Chat.com Documentation for Assignment 2</span></p>
+
+<p class=TOCTitle><span lang=EN-US>&nbsp;</span></p>
+
+<p class=TOCTitle><span lang=EN-US>For ICT3813 Web Framework Development</span></p>
+
+<p class=TOCTitle><span lang=EN-US>&nbsp;</span></p>
+
+<p class=TOCTitle><span lang=EN-US>By Paul Collins s5198025</span></p>
+
+<p class=TOCTitle><span lang=EN-US>&nbsp;</span></p>
+
+<b><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif'><br
+clear=all>
+</span></b>
+
+<p class=TOCTitle><span lang=EN-US style='font-weight:normal'> </span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Git </span></b></p>
+
+<p class=MsoNormal><i><span lang=EN-US>Describe the layout of your git
+repository and the approach you took for version control.</span></i></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Git version control was used and published
+via Github.com. Two separate repositories were used for server and client code
+respectively to facilitate deployment. Simple version numbers were given to
+each repo. 3 Continuous Integration branches were set up: develop, test,
+production. While there was no dev-ops process involved this branch design
+enables the integration of a SDLC at a later point if required. All development
+commits were added to develop branch. Production branch is the client facing
+branch to be deployed. Test branch is used for integration and User Acceptance
+Testing. Experimental branches were used to verify new features. ‘Milestone’
+branches were used as an easier alternative to retrieving prior versions of
+files at particular stages eg ‘git checkout milestone1 app.component.ts’ .</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Modularization was incorporated into the
+project by subdividing code into smaller focused files where practicable facilitating
+multiple users being able to push and pull to the remote origin without merge
+conflicts.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Frequent commits were used with the
+convention ‘&lt;branch-name&gt;:&lt;category&gt;&lt;description (optional)&gt;
+‘. Git aliases were used to facilitate regular commits without requirements for
+individual naming eg ‘misc = &quot;!git add . &amp;&amp; git commit -m $(git
+branch-name)': miscellaneous updates'&quot;. More significant commits were manually
+named.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<span lang=EN-US style='font-size:10.0pt;font-family:"Times New Roman",serif'><br
+clear=all>
+</span>
+
+<p class=MsoNormal></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Data Structures </span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>Describe the main data structures used in
+the program. For example, how the users and groups are represented.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>All entities with the exception of messages
+are stored in a mongdb database collection (‘dbcollection’). Each instance of
+an entity is stored as a document within this collection:</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span lang=EN-US><img
+width=282 height=230 id="Picture 1" src="README-filtered_files/image001.png"></span></p>
+
+<p class=MsoCaption><span lang=EN-US>Figure </span><span
+lang=EN-US>1</span><span lang=EN-US> dbcollection entities example</span></p>
+
+<p class=MsoNormal><span lang=EN-US>The entities in this collection are able to
+be linked via  an informal entity relationship where the ‘parent’ property acts
+as a foreign key that refers to the ‘name’ (primary key) property of another
+document. This forms a hierarchical ‘parent-child’ relationship.</span></p>
+
+<span lang=EN-US style='font-size:10.0pt;font-family:"Times New Roman",serif'><br
+clear=all>
+</span>
+
+<p class=MsoNormal></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US>Collection</span></b></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US>Entity/primary key</span></b></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US>Parent/foreign key</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>dbcollection</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Site</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Null</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>dbcollection</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Group</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Site</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>dbcollection</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Channel</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Group</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>dbcollection</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Member</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Site </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>dbcollection</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Member</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Group </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>dbcollection</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Member</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Channel</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Messages</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Message</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Channel</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=148 valign=top style='width:110.7pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Messages</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Message</span></p>
+  </td>
+  <td width=148 valign=top style='width:110.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Member</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>These entities were mirrored in the server
+as Mongoosejs schemas and on the client side as both interface and class.</span></p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span lang=EN-US><img
+width=236 height=90 id="Picture 2" src="README-filtered_files/image002.png"></span></p>
+
+<p class=MsoCaption><span lang=EN-US>Figure </span><span
+lang=EN-US>2</span><span lang=EN-US>Example Mongoosejs Schema</span></p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span lang=EN-US><img
+width=206 height=141 id="Picture 3" src="README-filtered_files/image003.png"></span></p>
+
+<p class=MsoCaption><span lang=EN-US>Figure </span><span
+lang=EN-US>3</span><span lang=EN-US>Example client side interface and class</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<b><span lang=EN-US style='font-size:10.0pt;font-family:"Times New Roman",serif'><br
+clear=all>
+</span></b>
+
+<p class=MsoNormal><b><span lang=EN-US>Documentation - REST API </span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>The Angular front end should communicate
+with the Node.js server using a REST API. describe each route provided,
+parameters, return values, and what it does.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>url end point</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Verb</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Description</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>/</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>GET</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Provides a html page with a summary of
+  end points</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><a name="_Hlk20998825"><span lang=EN-US>api/group</span></a></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves object using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/group</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Post</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Inserts or updates using request body</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/channel</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves object using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/channel</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Post</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Inserts or updates using request body</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/member</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves object using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/member</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Post</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Inserts or updates using request body</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/message</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves object using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/message</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Post</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Inserts or updates using request body</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/groups</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves objects using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/channels</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves objects using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/members</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves objects using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/messages</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Get</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Retrieves objects using query string
+  arguments</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>api/login</span></p>
+  </td>
+  <td width=118 valign=top style='width:88.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Post</span></p>
+  </td>
+  <td width=329 valign=top style='width:246.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Verifies username and password of site
+  member</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<b><span lang=EN-US style='font-size:10.0pt;font-family:"Times New Roman",serif'><br
+clear=all>
+</span></b>
+
+<p class=MsoNormal><b><span lang=EN-US>Documentation - Angular Architecture</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Angular Entities</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Type</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Name</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Auth Scope</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Description</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>App</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>public</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Entry point for the application
+  containing the navbar and placeholder for body components</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Account</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>user</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Chat</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>user</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Detail</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>user</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Home</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>public</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Landing page component</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Login</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>public</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Navbar</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>public</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Component</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Register</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>public</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Service</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Controller</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>n/a</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Used as an abstraction layer between the
+  persistence service (DbService) and the components</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Service</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Socket</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>n/a</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Interface for socket.io.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=114 valign=top style='width:85.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Service</span></p>
+  </td>
+  <td width=111 valign=top style='width:83.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Db</span></p>
+  </td>
+  <td width=58 valign=top style='width:43.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>n/a</span></p>
+  </td>
+  <td width=292 valign=top style='width:219.1pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Interface for the server application</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US> </span></p>
+
+<p class=Level3 style='margin-left:0cm'><span lang=EN-US style='font-style:
+normal'>* As a general rule anything that acts on an injected singleton (eg
+loggedInUser) is stored in the controller service. The DbService contains only
+the mechanics of contacting the server.</span></p>
+
+</div>
+
+</body>
+
+</html>

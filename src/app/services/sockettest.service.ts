@@ -8,9 +8,11 @@ const SERVER_URL = 'http://localhost:3000';
 })
 export class SocketTestService {
   private socket;
-  constructor() { }
+  constructor() {
 
-  public initSocketTest(): void {
+  }
+
+  public initSocket(): void {
     this.socket = io(SERVER_URL);
 
   }

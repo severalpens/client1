@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { GroupDetailComponent } from './components/detail/group-detail/group-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { SocketTestComponent } from './components/sockettest/sockettest.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'group-detail', component: GroupDetailComponent },
   { path: 'chat', component: ChatComponent },
   { path: '', component: HomeComponent },
-  { path: '', component: HomeComponent },
+  { path: 'sockettest', component: SocketTestComponent },
   { path: '', component: HomeComponent },
   { path: '', component: HomeComponent },
 ]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from '../../services/socket.service';
+import { SocketTestService as SocketService } from '../../services/sockettest.service';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class SocketTestComponent implements OnInit {
     });
   }
 
-  public socketTest() {
+  public chat() {
 
     if(this.messagecontent) {
       // check there is a mesage to send

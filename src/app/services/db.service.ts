@@ -13,6 +13,23 @@ const API = 'http://localhost:3000/api'
 export  class DbService {
   constructor(private httpClient: HttpClient) { }
 
+  post(path: string, props: Object){
+    path = API + path;
+    let result =  this.httpClient
+      .post<Object>(path, props)
+      console.log(result);
+      return result
+  }
+
+  get(path: string, props: Object){
+    path += '?'
+    for (var prop in props) {
+      path += `${prop}=${props[prop]}`
+    }
+    return this.httpClient
+      .post<Object>(path, props)
+  }
+
   // get groups
   getGroups() {
     return this.httpClient
@@ -322,6 +339,10 @@ deleteProduct(product: models.Product) {
 
 
 }
+
+
+
+
 
 // // Create an Observable out of a promise
 // const data = from(fetch('/api/endpoint'));

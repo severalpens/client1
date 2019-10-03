@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
 import { Message, MessageInterface } from 'src/app/models/models';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -18,15 +19,24 @@ export class ChatComponent implements OnInit {
   message: MessageInterface;
   messages: Array<MessageInterface>;
 
+  group: string = '';
+  channel: string = '';
+  member: string = '';
+
   ioConnection: any;
 
-  constructor(private socketService: SocketService) {
+  constructor(private socketService: SocketService, private route: ActivatedRoute) {
    }
 
   ngOnInit() {
-    this.initToConnection();
+    this.group = this.route.snapshot.params.group;
+    this.channel = this.route.snapshot.params.channel;
+    this.member = this.route.snapshot.params.member;
     this.messages = new Array<Message>();
-    console.log('ngOnInit');
+
+    this.initToConnection();
+
+
   }
 
   private initToConnection() {
@@ -40,23 +50,12 @@ export class ChatComponent implements OnInit {
   public chat() {
 
     if(this.messagecontent) {
-      this.message = new Message();
-      this.message.timestamp = Math.floor(Date.now() / 10)
-      this.message.id = 1;
-      this.message.author = 'super';
-      this.message.content = 'this is a test';
-      this.message.parent = 'Channel1';
-      this.message.visible = true;
-      let strMessage = JSON.stringify(this.message)
-      // check there is a mesage to send
-      console.log(`chat(): ${strMessage}`);
-      this.socketService.send(this.messagecontent);
-      this.message = null;
+
+      this.socketService.send(`${this.member}: ${this.messagecontent}`);
+      this.messagecontent = '';
 
     }else{
       console.log("no message");
     }
-
   }
-
 }

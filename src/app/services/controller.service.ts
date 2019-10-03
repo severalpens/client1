@@ -57,6 +57,19 @@ ngOnInit(){
   this.hydrateObjects()
 }
 
+login(username, password){
+  let props = {username, password};
+
+  let result = this.dbService.post('/login',props).subscribe(
+    (data:any) => {
+      if(data){
+        this.dbService.getMember(username).subscribe(x => this.currentMember = x);
+      }
+    }
+  )
+ return result
+}
+
   // async register(username, password) {
   //   let tmp = new User(username, password, true);
   //   let result = await this.httpClient

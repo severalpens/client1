@@ -17,8 +17,6 @@ export class GroupDetailComponent implements OnInit {
   parents: Array<String>;
   members: Array<String>;
   constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
-
-
   }
 
     ngOnInit() {

@@ -3,6 +3,7 @@ import { SocketService } from '../../services/socket.service';
 import { Message, MessageInterface } from 'src/app/models/models';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import { ActivatedRoute } from '@angular/router';
+import { ControllerService } from 'src/app/services/controller.service';
 
 
 
@@ -22,16 +23,16 @@ export class ChatComponent implements OnInit {
   group: string = '';
   channel: string = '';
   member: string = '';
-
+  currentSiteMemberName: String = '';
   ioConnection: any;
 
-  constructor(private socketService: SocketService, private route: ActivatedRoute) {
+  constructor(private controllerService: ControllerService,   private socketService: SocketService, private route: ActivatedRoute) {
    }
 
   ngOnInit() {
     this.group = this.route.snapshot.params.group;
     this.channel = this.route.snapshot.params.channel;
-    this.member = this.route.snapshot.params.member;
+    this.currentSiteMemberName = this.controllerService.currentSiteMember.name;
     this.messages = new Array<Message>();
 
     this.initToConnection();
@@ -51,7 +52,7 @@ export class ChatComponent implements OnInit {
 
     if(this.messagecontent) {
 
-      this.socketService.send(`${this.member}: ${this.messagecontent}`);
+      this.socketService.send(`${this.currentSiteMemberName}: ${this.messagecontent}`);
       this.messagecontent = '';
 
     }else{

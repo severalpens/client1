@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angu
 import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ControllerService } from 'src/app/services/controller.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,33 +12,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  routesubscription: Subscription;
-  dbService: DbService
-  loggedInUser: String;
-  constructor(private activatedRoute: ActivatedRoute,   dbService: DbService, private router: Router, private formsModule: FormsModule) {
-    this.dbService = dbService;
+  controllerService: ControllerService;
+
+  constructor(private activatedRoute: ActivatedRoute, controllerService: ControllerService,  dbService: DbService, private router: Router, private formsModule: FormsModule) {
+      this.controllerService = controllerService;
   }
 
   ngOnInit(){
-    this.routesubscription = this.activatedRoute.paramMap.subscribe(params => {});
-    }
 
-    login(){
-      this.router.navigateByUrl('/login');
-    }
-
-    logout(){
-      // this.loggedInUser = '';
-      // localStorage.setItem('loggedInUser','');
-      // this.router.navigateByUrl('/');
-
-    }
-    register(){
-      // this.router.navigateByUrl('/register');
     }
 
 
-  ngOnDestroy(){
-    // this.routesubscription.unsubscribe();
-    }
 }

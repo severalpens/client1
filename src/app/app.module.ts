@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ControllerService } from './services/controller.service';
 import { SocketService } from './services/socket.service';
 import { SocketTestComponent } from './components/sockettest/sockettest.component';
+import { MemberComponent } from './components/member/member.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SocketTestComponent } from './components/sockettest/sockettest.componen
     GroupDetailComponent,
     HomeComponent,
     SocketTestComponent,
+    MemberComponent,
   ],
   imports: [
     BrowserModule,

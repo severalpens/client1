@@ -7,12 +7,14 @@ import { GroupDetailComponent } from './components/detail/group-detail/group-det
 import { HomeComponent } from './components/home/home.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SocketTestComponent } from './components/sockettest/sockettest.component';
+import { MemberComponent } from './components/member/member.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'member', component: MemberComponent },
   { path: 'group-detail', component: GroupDetailComponent },
   { path: 'chat/:group/:channel/:member', component: ChatComponent },
   { path: '', component: HomeComponent },

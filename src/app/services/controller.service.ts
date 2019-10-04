@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   providedIn: "root"
 })
 export  class ControllerService implements OnInit {
+  chains:               models.Group[];
   groups:               models.Group[];
   channels:             models.Channel[];
   members:              models.Member[];
@@ -22,8 +23,10 @@ export  class ControllerService implements OnInit {
   currentSiteMember:    models.Member;
   currentMessage:       models.Message;
   currentProduct:       models.Product;
+  loggedIn: boolean;
 
   constructor(private dbService: DbService, private router: Router) {
+    this.chains =               new Array<models.Group>();
     this.groups =               new Array<models.Group>();
     this.channels =             new Array<models.Channel>();
     this.members =              new Array<models.Member>();
@@ -38,10 +41,13 @@ export  class ControllerService implements OnInit {
    }
 
   hydrateObjects(username){
+    console.log(username);
     this.dbService.getSite('chat').subscribe(x => this.currentSite = x);
-    this.dbService.getGroups().subscribe(x => this.groups = x);
-    this.dbService.getChannels().subscribe(x => this.channels = x);
-    this.dbService.getMember(username).subscribe(x => this.currentSiteMember = x);
+    this.dbService.getMembers().subscribe(x => this.members = x);
+    this.dbService.getMember(username).subscribe((x) => {
+      this.currentSiteMember = x
+      console.log(this.currentSiteMember);
+    });
     this.dbService.getProducts().subscribe(x => this.products = x);
   }
 
@@ -55,8 +61,9 @@ const result = this.dbService.post('/login',{username, password})
 result.subscribe(
     (data:any) => {
       if(data){
+        this.loggedIn = true;
        this.hydrateObjects(username)
-        this.router.navigateByUrl('/account')
+        this.router.navigateByUrl('/member')
       }
     }
   )

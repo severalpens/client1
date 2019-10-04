@@ -52,7 +52,7 @@ export  class DbService {
   // get members
   getMembers() {
     return this.httpClient
-      .get<Array<models.Member>>(`${API}/members` )
+      .get<Array<models.Member>>(`${API}/member` )
       .pipe(map(data => data));
   }
 

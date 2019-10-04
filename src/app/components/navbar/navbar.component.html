@@ -4,25 +4,19 @@
       <a class="nav-link" routerLink="/">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" style='cursor:pointer' *ngIf="loggedInUser" routerLink="/account">Account</a>
+        <a class="nav-link" style='cursor:pointer' *ngIf="controllerService.loggedIn" routerLink="/member">Account</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style='cursor:pointer'  routerLink="/group-detail">Create a Group</a>
+        <a class="nav-link" style='cursor:pointer' *ngIf="controllerService.loggedIn" routerLink="/group-detail">Create a Group</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style='cursor:pointer'   [routerLink]="['/chat','group1','channel1','admin']">Chat</a>
+        <a class="nav-link" style='cursor:pointer'  *ngIf="controllerService.loggedIn" [routerLink]="['/chat','group1','channel1','admin']">Chat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style='cursor:pointer'  routerLink="/sockettest">sockettest</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" style='cursor:pointer' *ngIf="!loggedInUser" (click)="login()">Log In</a>
+      <a class="nav-link" style='cursor:pointer' *ngIf="!controllerService.loggedIn" [routerLink]="['/login']">Log In</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" style='cursor:pointer' *ngIf="!loggedInUser" (click)="register()">Register</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" style='cursor:pointer' *ngIf="loggedInUser" (click)="logout()">Log Out</a>
+      <a class="nav-link" style='cursor:pointer' *ngIf="controllerService.loggedIn" [routerLink]="['/login']">Log Out</a>
     </li>
   </ul>
 </nav>

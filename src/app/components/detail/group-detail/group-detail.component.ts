@@ -22,7 +22,8 @@ export class GroupDetailComponent implements OnInit {
     ngOnInit() {
       this.group = new Group();
       this.types = ['Group','Channel', 'Member', 'Message', 'Product'];
-      this.members = this.controllerService.currentSite.members.map(val => val.split(':')[0])
+      this.members = this.controllerService.members.map(val => val.name)
+      console.log(this.members);
   }
 
   submit(){

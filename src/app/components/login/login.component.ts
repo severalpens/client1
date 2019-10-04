@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
   password = "super1";
   showError: boolean;
   userid: string;
-  routesubscription: Subscription;
-  loginResult: any;
+  error: boolean;
   constructor(private activatedRoute: ActivatedRoute, private  controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
   }
 
@@ -24,12 +23,17 @@ export class LoginComponent implements OnInit {
     }
 
   ngOnDestroy(){
-    this.routesubscription.unsubscribe();
     }
 
   login(){
-    this.loginResult = this.controllerService.login(this.username, this.password);
-    console.log(this.loginResult);
+    let result = this.controllerService.login(this.username, this.password);
+    result.subscribe(
+      (data:any) => {
+        if(!data){
+         this.error = true;
+        }
+      }
+    )
   }
 
 }

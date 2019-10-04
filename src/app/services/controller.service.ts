@@ -5,6 +5,7 @@ import { ajax } from "rxjs/ajax";
 import { catchError, map, tap } from "rxjs/operators";
 import * as models from '../models/models';
 import { DbService } from './db.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: "root"
@@ -18,11 +19,11 @@ export  class ControllerService implements OnInit {
   currentSite:          models.Site;
   currentGroup:         models.Group;
   currentChannel:       models.Channel;
-  currentMember:        models.Member;
+  currentSiteMember:    models.Member;
   currentMessage:       models.Message;
   currentProduct:       models.Product;
 
-  constructor(private dbService: DbService) {
+  constructor(private dbService: DbService, private router: Router) {
     this.groups =               new Array<models.Group>();
     this.channels =             new Array<models.Channel>();
     this.members =              new Array<models.Member>();
@@ -31,15 +32,16 @@ export  class ControllerService implements OnInit {
     this.currentSite =          new models.Site;
     this.currentGroup =         new models.Group;
     this.currentChannel =       new models.Channel;
-    this.currentMember =        new models.Member;
+    this.currentSiteMember =        new models.Member;
     this.currentMessage =       new models.Message;
     this.currentProduct =       new models.Product;
    }
 
-  hydrateObjects(){
+  hydrateObjects(username){
     this.dbService.getSite('chat').subscribe(x => this.currentSite = x);
     this.dbService.getGroups().subscribe(x => this.groups = x);
     this.dbService.getChannels().subscribe(x => this.channels = x);
+    this.dbService.getMember(username).subscribe(x => this.currentSiteMember = x);
     this.dbService.getProducts().subscribe(x => this.products = x);
   }
 
@@ -49,10 +51,12 @@ ngOnInit(){
 
 
 login(username, password){
-  let result = this.dbService.post('/login',{username, password}).subscribe(
+const result = this.dbService.post('/login',{username, password})
+result.subscribe(
     (data:any) => {
       if(data){
-       this.hydrateObjects()
+       this.hydrateObjects(username)
+        this.router.navigateByUrl('/account')
       }
     }
   )

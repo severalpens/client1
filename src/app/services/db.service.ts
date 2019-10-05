@@ -6,6 +6,7 @@ import { catchError, map, tap } from "rxjs/operators";
 import Product  from '../models/product';
 
 const API = 'http://localhost:3000/api'
+//const API = 'https://gu-week9.herokuapp.com/api'
 
 @Injectable({
   providedIn: "root"
@@ -29,7 +30,7 @@ export  class DbService {
     // get product
     findById(_id: string): Observable<Product> {
       return this.httpClient
-      .get<Product>(`${API}/getlist?_id=${_id}` )
+      .get<Product>(`${API}/getbyid?_id=${_id}` )
     }
 
 
@@ -90,7 +91,7 @@ deleteProduct(product: Product) {
     path = API + path;
     let result =  this.httpClient
       .post<Object>(path, props)
-      console.log(result);
+      //console.log(result);
       return result
   }
 

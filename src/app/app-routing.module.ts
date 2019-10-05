@@ -11,16 +11,14 @@ import { MemberComponent } from './components/member/member.component';
 
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: AccountComponent },
   { path: 'member', component: MemberComponent },
   { path: 'group-detail', component: GroupDetailComponent },
   { path: 'chat/:group/:channel/:member', component: ChatComponent },
-  { path: '', component: HomeComponent },
   { path: 'sockettest', component: SocketTestComponent },
-  { path: '', component: HomeComponent },
-  { path: '', component: HomeComponent },
 ]
 
 @NgModule({

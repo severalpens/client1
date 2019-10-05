@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(localStorage.getItem('loggedInUser')){
-    }
   }
 
   }

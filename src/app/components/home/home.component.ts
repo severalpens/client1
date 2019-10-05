@@ -39,6 +39,15 @@ export class HomeComponent implements OnInit {
    }
 
    edit(product: Product){
+
+    // let _id = this.activatedRoute.snapshot.params._id;
+    // this.controllerService.findById(_id).subscribe(
+    //   (product) => {
+    //     this.product = product;
+    //   }
+    // )
+
+
      this.router.navigate(['/edit',product])
    }
 

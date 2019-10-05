@@ -26,6 +26,12 @@ export  class DbService {
     );
   }
 
+    // get product
+    findById(_id: string): Observable<Product> {
+      return this.httpClient
+      .get<Product>(`${API}/getlist?_id=${_id}` )
+    }
+
 
 // save product
 saveProduct(product: Product) {

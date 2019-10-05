@@ -43,4 +43,16 @@ export class ControllerService implements OnInit {
     return result;
 
   }
+
+  findById(_id: string){
+      const result = this.dbService.findById(_id)
+      result.subscribe((x) => {
+        this.currentProduct = x
+      });
+  
+      return result;
+  
+
+
+  }
 }

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GroupDetailComponent } from './components/detail/group-detail/group-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddComponent } from './components/add/add.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'group-detail', component: GroupDetailComponent },
+  { path: '/add', component: AddComponent },
+  { path: '/edit', component: EditComponent },
 ]
 
 @NgModule({

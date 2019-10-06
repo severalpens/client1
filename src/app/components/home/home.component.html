@@ -13,7 +13,7 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col" hidden>_id</th>
+            <th scope="col" >_id</th>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
@@ -24,8 +24,8 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of controllerService.products">
-              <td hidden>{{ product._id }}</td>
+            <tr *ngFor="let product of products">
+              <td >{{ product._id }}</td>
               <th scope="row">{{ product.Id }}</th>
               <td>{{ product.Name }}</td>
               <td>{{ product.Description }}</td>
@@ -33,7 +33,7 @@
               <td>{{ product.Units }}</td>
               <td><button type="button" in="edit" name="edit" class="btn btn-warning" [routerLink]="['/edit', product._id]">Edit</button></td>
               <!-- <td><button type="button" in="edit" name="edit" class="btn btn-info " (click)="edit(product)" >Edit</button></td> -->
-              <td><button type="button" in="delete" name="delete" class="btn btn-danger" data-toggle="modal" (click)="controllerService.deleteProduct(product._id)" >Delete</button></td>
+              <td><button type="button" in="delete" name="delete" class="btn btn-danger" data-toggle="modal" (click)="delete(product._id)" >Delete</button></td>
            </tr>
         </tbody>
       </table>

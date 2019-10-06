@@ -13,6 +13,7 @@ import {
   throwError as observableThrowError,
   ObservableInput
 } from "rxjs"; // use obs$ naming convention
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -20,17 +21,26 @@ import {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  temps = ['t1','t2','t3']
-  controllerService: ControllerService;
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService, controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
-    this.controllerService = controllerService;
+  products: Array<Product>;
+  constructor(private activatedRoute: ActivatedRoute,  private productService: ProductService, private router: Router, private formsModule: FormsModule) {
   }
 
   ngOnInit() {    
+     this.productService.getProducts().subscribe(results => this.products = results)
    }
 
    delete(_id){
+     console.log(`home.component.delete activated: ${_id}`);
+    this.productService.delete(_id).subscribe({
+      next: x => console.log('Observer got a next value: ' + x),
+      error: err => console.error('Observer got an error: ' + JSON.stringify(err)),
+      complete: () => {
+        this.productService.getProducts();
      
+      },
+    })
+      
+
    }
 
 }

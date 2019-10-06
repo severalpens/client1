@@ -17,7 +17,6 @@ import { ajax } from "rxjs/ajax";
 import { catchError, map, tap } from "rxjs/operators";
 import Product from "../models/product";
 import { DbService } from "./db.service";
-import { AltService } from "./alt.service";
 import { Router } from "@angular/router";
 
 @Injectable({

@@ -21,22 +21,16 @@ import {
 })
 export class HomeComponent implements OnInit {
   temps = ['t1','t2','t3']
-  products: Array<Product>;
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,private controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
+  controllerService: ControllerService;
+  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService, controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
+    this.controllerService = controllerService;
   }
 
-  ngOnInit() {
-    this.getProducts();
-  }
-
-  getProducts(){
-    const result = this.dbService.getProducts()
-    result.subscribe((x) => {
-       this.products = x
-     });
- 
-     
+  ngOnInit() {    
    }
 
+   delete(_id){
+     
+   }
 
 }

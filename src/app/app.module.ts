@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ControllerService } from './services/controller.service';
 import { EditComponent } from './components/edit/edit.component';
 import { AddComponent } from './components/add/add.component';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AddComponent } from './components/add/add.component';
     ReactiveFormsModule,
     CommonModule
   ],
-  providers: [DbService, ControllerService],
+  providers: [DbService, ControllerService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

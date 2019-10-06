@@ -43,15 +43,36 @@ saveProduct(product: Product) {
 }
 
 // delete product
-deleteProduct(product: Product) {
+deleteProduct(_id: string) {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const url = `${API}/products/${product.Id}`;
-
-  return this.httpClient.delete<Product>(url).pipe(catchError(this.handleError));
+  return this.httpClient.post<Array<Product>>(`${API}/remove`,{_id})
+  .pipe(map(data => data));
 }
 
+// post product
+update(product: Product) {
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  });
+
+  return this.httpClient
+    .post<Product>(`${API}/update`, product)
+    .pipe(catchError(this.handleError));
+}
+
+
+// post product
+save(product: Product) {
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  });
+
+  return this.httpClient
+    .post<Product>(`${API}/add`, product)
+    .pipe(catchError(this.handleError));
+}
 
 
 

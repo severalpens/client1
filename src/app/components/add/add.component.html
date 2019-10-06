@@ -1,1 +1,38 @@
-<p>add works!</p>
+<div class="col-md-6" style="margin:3rem">
+    <form id="groupdetailform" name="groupdetailform" class="container-fluid" (submit)="submit()" novalidate>
+        <div class="form-group" >
+            <label for="Id">_id</label>
+            <input type="text" class="form-control" name="_id" id="_id" [(ngModel)]="product._id" readonly>
+          </div>
+          <div class="form-group" >
+              <label for="Id">Id</label>
+              <input type="text" class="form-control" name="Id" id="Id" [(ngModel)]="product.Id" readonly>
+            </div>
+            
+      <div class="form-group">
+        <label for="type">Name</label>
+        <input type="text" class="form-control" name="Name" id="Name" type="type" [(ngModel)]="product.Name" >
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Description</label>
+        <input type="text" class="form-control" id="Description" name="Description" [(ngModel)]="product.Description">
+      </div>
+      <div class="form-group">
+            <label for="type">Price</label>
+            <input type="text" class="form-control" id="Price" name="Price" [(ngModel)]="product.Price">
+          </div>
+          <div class="form-group">
+                <label for="type">Units</label>
+                <input type="text" class="form-control" id="Units" name="Units" [(ngModel)]="product.Units">
+              </div>
+        
+
+    <div class="form-group">
+            <button type="text"  name="submitbutton" id="submitbutton"   class="btn btn-primary" >Submit</button>
+          </div>
+  </form>
+  
+    </div>
+   
+  

@@ -26,7 +26,12 @@ export class EditComponent implements OnInit {
   }
 
   submit(){
-    
+    this.controllerService.update(this.product).subscribe(
+      (product) => {
+        this.product = product;
+        this.router.navigateByUrl('');
+      }
+    )
   }
 
 }

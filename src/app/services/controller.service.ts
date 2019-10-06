@@ -17,18 +17,18 @@ import { ajax } from "rxjs/ajax";
 import { catchError, map, tap } from "rxjs/operators";
 import Product from "../models/product";
 import { DbService } from "./db.service";
+import { AltService } from "./alt.service";
 import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class ControllerService implements OnInit {
-  products: Product[];
+  products: Array<Product>;
   currentProduct: Product;
 
   constructor(private dbService: DbService, private router: Router) {
-    this.products = new Array<Product>();
-    this.currentProduct = new Product();
+    this.getProducts()
   }
   
   ngOnInit() {
@@ -52,8 +52,40 @@ export class ControllerService implements OnInit {
       });
   
       return result;
-  
-
-
   }
+
+
+  
+  deleteProduct(_id: string){
+    this.dbService.deleteProduct(_id).toPromise().then((prod) => {
+          this.getProducts()
+    })
+   
+
+}
+
+  
+update(product: Product){
+  const result = this.dbService.update(product)
+      result.subscribe((x) => {
+        console.log(x);
+        this.currentProduct = x
+        this.getProducts();
+      });
+  
+      return result;
+}
+
+
+save(product: Product){
+  const result = this.dbService.save(product)
+      result.subscribe((x) => {
+        console.log(x);
+        this.currentProduct = x
+        this.getProducts();
+      });
+  
+      return result;
+}
+
 }

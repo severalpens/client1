@@ -42,7 +42,11 @@ export class HomeComponent implements OnInit {
 
     })
 
-}
+    
+  }
+      editProduct(product: Product){
+           
+      }
 
 
 }

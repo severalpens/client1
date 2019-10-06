@@ -14,8 +14,7 @@ export class ProductService {
 
   getProducts() {
     return this.http.get<Product[]>(`${this.productsUrl}/all`).pipe(
-      map(data => data),
-      catchError(this.handleError)
+      map(data => data)
     );
   }
 
@@ -25,21 +24,22 @@ export class ProductService {
     );
   }
 
-  save(product: Product) {
-    if (product._id) {
-      return this.put(product);
-    }
-    return this.post(product);
+  
+  // Add new Product
+   add(product: Product) {
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    return this.http
+      .post<Product>(this.productsUrl, product)
   }
 
   // delete(hero: Hero) {
   //   const headers = new Headers();
   //   headers.append('Content-Type', 'application/json');
-
   //   const url = `${this.heroesUrl}/${hero.id}`;
-
   //   return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
   // }
+
 
   delete(product: Product) {
     const headers = new Headers();
@@ -50,29 +50,26 @@ export class ProductService {
 
   }
 
-  // Add new Product
-  private post(product: Product) {
-    const headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    return this.http
-      .post<Product>(this.productsUrl, product)
-      .pipe(catchError(this.handleError));
-  }
+
+
+
+
 
   // Update existing Product
-  private put(product: Product) {
+   update(product: Product) {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
-
-    const url = `${this.productsUrl}/${product._id}`;
-
     return this.http
-      .put<Product>(url, product)
-      .pipe(catchError(this.handleError));
+      .post<Product>(`${this.productsUrl}/update`, product)
   }
 
-  private handleError(res: HttpErrorResponse | any) {
-    console.error(res.error || res.body.error);
-    return observableThrowError(res.error || "Server error");
-  }
+
+
 }
+
+
+
+
+
+
+

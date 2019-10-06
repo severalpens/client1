@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class AddComponent implements OnInit {
   product: Product
   constructor(private activatedRoute: ActivatedRoute, private  productService: ProductService, private router: Router, private formsModule: FormsModule) {
+ 
   }
 
   ngOnInit() {
@@ -20,11 +21,14 @@ export class AddComponent implements OnInit {
   }
 
   submit(){
-    this.productService.save(this.product).subscribe(
-      (result) => {
-        this.router.navigateByUrl('/');
-      }
-    )
+    this.productService.add(this.product).subscribe({
+      next: x => this.router.navigateByUrl('/home'),
+      error: (err) => {
+        console.error('Observer got an error: ' + err);
+        this.router.navigateByUrl('/home');
+      },
+      complete: () => console.log('Observer got a complete notification'),
+    })
   }
 
 }

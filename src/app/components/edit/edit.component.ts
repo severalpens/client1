@@ -12,25 +12,26 @@ import { ProductService } from 'src/app/services/product.service';
 export class EditComponent implements OnInit {
   product: Product
   constructor(private activatedRoute: ActivatedRoute,  private  productService: ProductService, private router: Router, private formsModule: FormsModule) {
+  
+  
   }
 
 
   ngOnInit() {
-    let _id = this.activatedRoute.snapshot.params._id;
+    let _id =  this.activatedRoute.snapshot.params._id;
     this.productService.getProduct(_id).subscribe(
       (product) => {
         this.product = product;
+        console.log(JSON.stringify(this.product));
       }
     )
   }
 
   submit(){
-    this.productService.save(this.product).subscribe({
-      next: x => console.log('Observer got a next value: ' + x),
-      error: err => console.error('Observer got an error: ' + err),
-      complete: () => console.log('Observer got a complete notification'),
-    }
-    )
+    console.log(this.product);
+    this.productService.update(this.product).subscribe((result) =>{
+          this.router.navigateByUrl('/home')
+    })
   }
 
 }

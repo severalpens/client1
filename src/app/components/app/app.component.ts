@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder  } from '@angular/forms';
-import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'chat';
-  constructor(private dbService: DbService, private router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {

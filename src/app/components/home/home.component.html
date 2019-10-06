@@ -31,13 +31,13 @@
               <td>{{ product.Description }}</td>
               <td>{{ product.Price }}</td>
               <td>{{ product.Units }}</td>
-              <td><button type="button" in="edit" name="edit" class="btn btn-warning" [routerLink]="['/edit', product._id]">Edit</button></td>
+              <td><button type="button" id="edit" name="edit" class="btn btn-primary" (click)="onSelect(product)">Edit</button></td>
               <!-- <td><button type="button" in="edit" name="edit" class="btn btn-info " (click)="edit(product)" >Edit</button></td> -->
-              <td><button type="button" in="delete" name="delete" class="btn btn-danger" data-toggle="modal" (click)="delete(product._id)" >Delete</button></td>
+              <td><button type="button" id="delete" name="delete" class="btn btn-warning" (click)="deleteProduct(product)" >Delete</button></td>
            </tr>
         </tbody>
       </table>
-<!-- Modal -->
+<!-- Modal -->  
 <div id="myModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder, NgForm, FormsModule  } from '@angular/forms';
-import { DbService } from 'src/app/services/db.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ControllerService } from 'src/app/services/controller.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +11,8 @@ import { ControllerService } from 'src/app/services/controller.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  controllerService: ControllerService;
 
-  constructor(private activatedRoute: ActivatedRoute, controllerService: ControllerService,  dbService: DbService, private router: Router, private formsModule: FormsModule) {
-      this.controllerService = controllerService;
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService,  private router: Router, private formsModule: FormsModule) {
   }
 
   ngOnInit(){

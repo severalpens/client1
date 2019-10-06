@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DbService } from 'src/app/services/db.service';
-import { ControllerService } from 'src/app/services/controller.service';
 import { FormsModule } from '@angular/forms';
 import Product from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-edit',
@@ -12,13 +11,13 @@ import Product from 'src/app/models/product';
 })
 export class EditComponent implements OnInit {
   product: Product
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,private controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
+  constructor(private activatedRoute: ActivatedRoute,  private  productService: ProductService, private router: Router, private formsModule: FormsModule) {
   }
 
 
   ngOnInit() {
     let _id = this.activatedRoute.snapshot.params._id;
-    this.controllerService.findById(_id).subscribe(
+    this.productService.getProduct(_id).subscribe(
       (product) => {
         this.product = product;
       }
@@ -26,11 +25,11 @@ export class EditComponent implements OnInit {
   }
 
   submit(){
-    this.controllerService.update(this.product).subscribe(
-      (product) => {
-        this.product = product;
-        this.router.navigateByUrl('');
-      }
+    this.productService.save(this.product).subscribe({
+      next: x => console.log('Observer got a next value: ' + x),
+      error: err => console.error('Observer got an error: ' + err),
+      complete: () => console.log('Observer got a complete notification'),
+    }
     )
   }
 

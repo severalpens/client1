@@ -8,8 +8,9 @@ import { Router } from "@angular/router";
 @Injectable()
 export class ProductService {
   private productsUrl = "http://localhost:3000/api/product"; // URL to web api
-
-  constructor(private http: HttpClient) {}
+  products: Array<Product>;
+  selectedProduct: Product;
+  constructor(private http: HttpClient, private router: Router) {}
 
   getProducts() {
     return this.http.get<Product[]>(`${this.productsUrl}/all`).pipe(
@@ -31,13 +32,22 @@ export class ProductService {
     return this.post(product);
   }
 
-  delete(_id: string) {
-    console.log(`product.service.delete activated: ${_id}`);
+  // delete(hero: Hero) {
+  //   const headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+
+  //   const url = `${this.heroesUrl}/${hero.id}`;
+
+  //   return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
+  // }
+
+  delete(product: Product) {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
-    return this.http.post<Product>(`${this.productsUrl}/remove`, _id)
-    .pipe(catchError(this.handleError));
-    ;
+    const url = `${this.productsUrl}/${product._id}`;
+    return this.http.delete<Product>(url);
+     
+
   }
 
   // Add new Product

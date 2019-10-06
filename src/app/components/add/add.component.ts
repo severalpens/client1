@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DbService } from 'src/app/services/db.service';
-import { ControllerService } from 'src/app/services/controller.service';
 import { FormsModule } from '@angular/forms';
 import Product from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -13,7 +12,7 @@ import Product from 'src/app/models/product';
 })
 export class AddComponent implements OnInit {
   product: Product
-  constructor(private activatedRoute: ActivatedRoute,  private dbService: DbService,private controllerService: ControllerService, private router: Router, private formsModule: FormsModule) {
+  constructor(private activatedRoute: ActivatedRoute, private  productService: ProductService, private router: Router, private formsModule: FormsModule) {
   }
 
   ngOnInit() {
@@ -21,10 +20,9 @@ export class AddComponent implements OnInit {
   }
 
   submit(){
-    this.controllerService.save(this.product).subscribe(
-      (product) => {
-        this.product = product;
-        this.router.navigateByUrl('');
+    this.productService.save(this.product).subscribe(
+      (result) => {
+        this.router.navigateByUrl('/');
       }
     )
   }

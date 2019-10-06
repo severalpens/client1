@@ -29,8 +29,13 @@ export class EditComponent implements OnInit {
 
   submit(){
     console.log(this.product);
-    this.productService.update(this.product).subscribe((result) =>{
-          this.router.navigateByUrl('/home')
+    this.productService.update(this.product).subscribe({
+      next: x => this.router.navigateByUrl('/home'),
+      error: (err) => {
+        console.error('Observer got an error: ' + err);
+        this.router.navigateByUrl('/home');
+      },
+      complete: () => console.log('Observer got a complete notification'),
     })
   }
 
